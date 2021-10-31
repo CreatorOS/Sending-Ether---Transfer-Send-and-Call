@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "defaultFile": "contracts/SendEther.sol",
+  "environment": "solidity",
+  "setupCommands": ["npm i", "npx hardhat compile"],
+  "compileCommand": "npx hardhat compile",
+  "tests": [
+    { "itShould": "Compile", "command": "sh learn_tests/68.sh" },
+    { "itShould": "Call sendViaCall", "command": "sh learn_tests/69.sh" }
+  ],
+  "learnerAccessibleFileList": ["contracts/*"]
+}
