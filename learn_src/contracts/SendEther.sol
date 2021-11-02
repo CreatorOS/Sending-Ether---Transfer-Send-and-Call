@@ -44,7 +44,7 @@ contract SendEther {
 
     function sendViaCall(address payable _to) public payable {
         // write logic to send Ether to _to via Call
-         
-        require(sent, "Failed to send Ether");
+
+        
     }
 }
