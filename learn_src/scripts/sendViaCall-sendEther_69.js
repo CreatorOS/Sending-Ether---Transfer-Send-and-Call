@@ -22,18 +22,27 @@ async function main() {
   await contract.deployed();
   console.log('SendEther Contract deployed to:', contract.address);
   try {
-    // console.log(`Calling deposit()`);
-    // await contract.deposit({value:ethers.utils.parseUnits("1", "ether").toHexString()});
     const balBeforeTransfer = new BN((await deployer2.getBalance()).toString());
+    const balBeforeTransfer1 = new BN((await deployer.getBalance()).toString());
     console.log(
-      `Balance before Transfer : ${balBeforeTransfer} wei`,
+      `Balance of account 1: ${deployer.address} before Transfer : ${balBeforeTransfer1} wei`,
     );
-    const receipt = await contract.sendViaCall(deployer2.address, {value:ethers.utils.parseUnits("1", "ether").toHexString()});
+    console.log(
+      `Balance of account 2: ${deployer2.address} before Transfer : ${balBeforeTransfer} wei`,
+    );
+    console.log(`Calling sendViaVall(${deployer2.address}, '1 ether')`);
+    const receipt = await contract.sendViaCall(deployer2.address, {
+      value: ethers.utils.parseUnits('1', 'ether').toHexString(),
+    });
     const balAfterTransfer = new BN((await deployer2.getBalance()).toString());
+    const balAfterTransfer1 = new BN((await deployer.getBalance()).toString());
     console.log(
-      `Balance after Transfer : ${balAfterTransfer} wei`,
+      `Balance of account 1: ${deployer.address}  after Transfer : ${balAfterTransfer1} wei`,
     );
-    if(balAfterTransfer.gt(balBeforeTransfer)) {
+    console.log(
+      `Balance of account 2: ${deployer2.address}  after Transfer : ${balAfterTransfer} wei`,
+    );
+    if (balAfterTransfer.gt(balBeforeTransfer)) {
       console.log('Test Passed!');
       process.exit(0);
     } else {
