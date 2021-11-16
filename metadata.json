@@ -2,11 +2,19 @@
   "version": "1.0.0",
   "defaultFile": "contracts/SendEther.sol",
   "environment": "solidity",
-  "setupCommands": ["npm i", "npx hardhat compile"],
+  "setupCommands": [
+    "npx hardhat compile"
+  ],
   "compileCommand": "npx hardhat compile",
   "tests": [
-    { "itShould": "Compile", "command": "sh learn_tests/68.sh" },
-    { "itShould": "Call sendViaCall", "command": "sh learn_tests/69.sh" },
+    {
+      "itShould": "Compile",
+      "command": "sh learn_tests/68.sh"
+    },
+    {
+      "itShould": "Call sendViaCall",
+      "command": "sh learn_tests/69.sh"
+    },
     {
       "itShould": "Call send transaction w/o msg.data and receive should be fired",
       "command": "sh learn_tests/3.sh"
@@ -16,5 +24,7 @@
       "command": "sh learn_tests/4.sh"
     }
   ],
-  "learnerAccessibleFileList": ["contracts/*"]
+  "learnerAccessibleFileList": [
+    "contracts/*"
+  ]
 }
